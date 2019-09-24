@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "lib": ["dom", "esnext"],
+    "importHelpers": true,
+    "declaration": true,
+    "inlineSourceMap": true,
+    "rootDir": "./",
+    "outDir": "dist/",
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    // "allowSyntheticDefaultImports": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "esModuleInterop": true,
+    "jsx": "react",
+    "paths": {
+      "*": ["src/*", "node_modules/*", "src/types/*"]
+    },
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/types/*" /*Without /src/types we get a cannot find module error*/
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "types"
+  ]
+}
