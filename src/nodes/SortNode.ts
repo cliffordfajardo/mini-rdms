@@ -117,4 +117,14 @@ export class SortNode implements PlanNode {
       return null;
     }
   }
+
+  /**
+   * 
+   */
+  reset(){
+    this.childPlanNode.reset();
+    this.yieldedRowCount = 0;
+    this.recordsListIsFull = false;
+    this.storage = [];
+  }
 }

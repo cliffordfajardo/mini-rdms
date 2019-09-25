@@ -4,6 +4,7 @@
     "module": "esnext",
     "resolveJsonModule": true,
     "lib": ["dom", "esnext"],
+    "allowJs": true,
     "importHelpers": true,
     "declaration": true,
     "inlineSourceMap": true,

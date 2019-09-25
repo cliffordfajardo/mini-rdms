@@ -39,4 +39,11 @@ export class SelectionNode implements PlanNode {
     if (this.operator === 'ISNOTNULL') return currentRecordFieldValue !== null ? currentRow : this.next();
     throw new Error(`Selection node encountered unknown operator ${this.operator}`);
   }
+
+  /**
+   * 
+   */
+  reset() {
+    this.childPlanNode.reset()
+  }
 }

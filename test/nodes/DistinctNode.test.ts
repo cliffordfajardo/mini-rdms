@@ -52,5 +52,12 @@ describe('DistinctNode -', () => {
         ]));
       });
     })
+
+
+    // describe('reset', () => {
+    //   it('', () => {
+
+    //   })
+    // });
   });
 });

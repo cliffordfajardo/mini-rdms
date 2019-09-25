@@ -3,7 +3,8 @@ import { InMemoryDB } from 'types/database-in-memory';
 
 
 /**
- * FilescanNode is in charge of accessing data from a table/file.
+ * A plan node that scans over records in memory.
+ * This is intended to behave equivalently to FileScan, but over a list of input records rather than reading from disk.
  * 
  * @example 
  * SELECT * FROM some_table
@@ -25,5 +26,12 @@ export class MemoryscanNode implements PlanNode {
       return dbRecord
     }
     return null;
+  }
+
+  /**
+   * 
+   */
+  reset(){
+    this.readIndex = 0;
   }
 }

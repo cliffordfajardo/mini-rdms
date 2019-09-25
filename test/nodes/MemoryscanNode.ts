@@ -27,5 +27,11 @@ describe('FilescanNodeInMemory -', () => {
       });
     })
 
+    // describe('reset', () => {
+    //   it('', () => {
+
+    //   })
+    // });
+
   });
 });

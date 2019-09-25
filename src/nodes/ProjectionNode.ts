@@ -24,6 +24,14 @@ export class ProjectionNode implements PlanNode {
       return nextRow
   }
 
+
+  /**
+   * TODO
+   */
+  reset() {
+    this.childPlanNode.reset();
+  }
+
   /**
    * Given a database record, it will reduce it down to contain only fields specified
    * in the 'columnList
@@ -33,8 +41,8 @@ export class ProjectionNode implements PlanNode {
     formatRecord({movieId:0, title:'Apples'}) === {title: 'Apples'}
    */
   formatRecord(databaseRecord:any) {
-    const result = this.columnList .reduce((result: any, key) => {
-        result[key] = databaseRecord[key];
+    const result = this.columnList.reduce((result: any, key) => {
+      result[key] = databaseRecord[key];
       return result;
     }, {});
     return result;

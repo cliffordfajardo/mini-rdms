@@ -39,24 +39,57 @@ import { Executor } from "./executor";
 //   ['FILESCAN', 'movies']
 // ];
 
-// const query6 = ['NESTEDJOIN', 'movieId', 'movieId',
+// const queryPlan6 = ['NESTEDJOIN', 'movieId', 'movieId',
 //   ['SELECTION', '=', 'title', 'Dark Knight Rises, The (2012)',
 //     ['PROJECTION', ['movieId', 'title'],
-//       ['FILESCAN', movies]
+//       ['FILESCAN', 'movies']
 //     ]
 //   ],
 //   ['PROJECTION', ['rating', 'movieId'],
-//     ['FILESCAN', ratings]
+//     ['FILESCAN', 'ratings']
 //   ]
 // ]
 
 
-const queryPlan4 = [
-  ['SORT', 'title', 'ASC'],
-  ['FILESCAN', 'movies']
+/**
+ * @example
+ * SELECT * FROM movies
+ * JOIN ratings ON movies.movieId = ratings.movieId
+ */
+// const queryPlan7 = [
+//   'NESTEDJOIN', 'movieId', 'movieId',
+//   ['FILESCAN', 'movies'],
+//   ['FILESCAN', 'ratings']
+// ];
+
+/**
+ * @example
+ * SELECT * FROM directors
+ * JOIN movies ON movies.movidId = directors.movieId 
+ * JOIN ratings ON ratings.movieId = movies.movieId
+ * 
+ * The query looks something like that... use PG query planner to verify..but thats the gist of it..
+ * https://www.dofactory.com/sql/join
+ */
+const queryPlan8 = [
+  'NESTEDJOIN', 'movieId', 'movieId',    
+  ['FILESCAN', 'directors'],
+  // NOTE! : My Nested JOIN Was failing when I was originally passing NESTEDJOIN FIRST
+  //        I belive this has to do with the fact, that NESTED JOIN table has more rows
+  //        then the other table . BEFORE (3, 2), AFTER (2,3) WRITE A TEST
+  ['NESTEDJOIN', 'movieId', 'movieId',
+    ['FILESCAN', 'movies'],
+    ['FILESCAN', 'ratings'],
+  ],
 ];
 
-let x = new Executor(queryPlan4);
+
+// const queryPlan4 = [
+//   ['SORT', 'title', 'ASC'],
+//   ['FILESCAN', 'movies']
+// ];
+
+let x = new Executor(queryPlan8); // the difference bewtween this implementation & braddb is that their Executors constructor function has this while loop.
 let tmp;
 while(tmp = x.next()){
   console.log(tmp);

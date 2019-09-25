@@ -62,5 +62,11 @@ describe('SelectionNode -', () => {
       });
       
     });
+
+    // describe('reset', () => {
+    //   it('', () => {
+
+    //   })
+    // });
   });
 });
