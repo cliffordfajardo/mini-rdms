@@ -1,23 +1,24 @@
 export type primitive = number | string | boolean;
 
-type column = {
+export type column = {
   name: string;
   type: primitive;
   size: number;
 };
 
-type table = {
+export type table = {
   name: string;
   columns: column[];
 };
 
 
+// Question for OZ, size of strings? Var char? Confused
 export const movies = {
   name: 'movies',
   columns: [
     {
       name: 'movieId',
-      type: 'number',
+      type: 'integer',
       size: 4,
     },
     {
