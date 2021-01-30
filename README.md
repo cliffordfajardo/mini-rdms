@@ -1,5 +1,5 @@
 # Baby SQL
-> A mini SQL database implementation for educational purposes
+> A micro implementation of a RDMS (like MYSQL/POSTGREs) educational purposes froms scratch
 
 ## Table of Contents
 - In Memory Reperensetation
@@ -25,3 +25,12 @@ npm test
 ```
 
 # Debugging with VSCode
+
+
+
+## Credits & Inspiration
+- [Oz Nova](https://github.com/ozan)
+- [Elliot Jin](https://github.com/robot-dreams)
+  - https://github.com/robot-dreams/zdb2 
+- [Jason Benn](https://github.com/JasonBenn/dbms)
+  - [dbms](https://github.com/JasonBenn/dbms)
